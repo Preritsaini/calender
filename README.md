@@ -12,7 +12,7 @@ Features
 
 ## Screenshot
 
-![DateCal Screenshot](assets/images/scrnshot3.jpeg)
+![DateCal Screenshot](assets/images/scrnshot4.jpeg)
 
 
 If you like my work and want to show some ❤️, please consider giving a ⭐️ to this Repository.
