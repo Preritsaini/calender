@@ -14,10 +14,10 @@ class _DateCalState extends State<DateCal> {
   DateTime nextWeek = DateTime.now().add(Duration(days: 7));
 
   List<String> months = [
-    "Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"
+    "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
   ];
 
-  List<String> days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  List<String> days = ["Mon", " Tue", " Wed", " Thu", "  Fri", "   Sat", "  Sun"];
 
   int year = DateTime.now().year;
   int monthIndex = DateTime.now().month - 1;
@@ -60,7 +60,7 @@ class _DateCalState extends State<DateCal> {
         backgroundColor: Colors.indigo.withOpacity(0.8),
         title: const Text(
           "Calendar",
-          style: TextStyle(fontSize: 30,color: Colors.white),
+          style: TextStyle(fontSize: 30, color: Colors.white),
         ),
         centerTitle: true,
       ),
@@ -126,17 +126,27 @@ class _DateCalState extends State<DateCal> {
 
   Widget _buildWeekdaysHeader() {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: days.map((day) {
-        return Text(
-          day,
-          style: const TextStyle(
-            fontSize: 18,
-            color: Colors.grey,
-            fontWeight: FontWeight.w600,
-          ),
-        );
-      }).toList(),
+      children: [SizedBox(width: 13),
+        Row(
+
+          children: days.map((day) {
+            return Row(
+              children: [
+
+                Text(
+                  day,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                SizedBox(width: 15)
+              ],
+            );
+          }).toList(),
+        ),
+      ],
     );
   }
 
@@ -189,9 +199,12 @@ class _DateCalState extends State<DateCal> {
   }
 
   Widget _buildSelectedDateText() {
-    return Text(
-      'Selected Date: $selectedIndex ${months[monthIndex]} $year',
-      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.indigo),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Text(
+        'Selected Date: $selectedIndex ${months[monthIndex]} $year',
+        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.indigo),
+      ),
     );
   }
 
